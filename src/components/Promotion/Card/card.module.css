@@ -1,49 +1,48 @@
 .promotionCard{
-    border-radius:  8px;
-    border: 1px solid #c3c3c3;
-    box-shadow: 0 2px 7px rgba(0,0,0, 0.15);
-    display:flex;
-    align-items: flex-start;
-    border-radius:  8px;
-    padding: 15px;
+    border-radius: 8px;
+     border: 1px solid #000000;
+      box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15);
+       display: flex;
+        padding: 15px;
+         align-items: flex-start;
 }
 
 .promotionCardImage{
     max-width: 100px;
-    margin-right: 20px;
+     margin-right: 20px;
 }
 
 .promotionCardTitle{
     font-size: 16px;
-    color: #2c3e50;
+     color: #50342C;
 }
 
 .promotionCardPrice{
     font-size: 26px;
-    font-weight: 700;
-    color: #3498db;
+     font-weight: 700;
+      color: #3498DB;
 }
 
 .promotionCardFooter{
     display: flex;
-    align-items: center;
+     align-items: center;
 }
 
 .promotionCardComment{
-    color: #95a5a6;
-    font-weight: 700;
+    color: #95A5A6;
+     font-weight: 700;
 }
 
 .promotionCardCommentsCount{
     margin-left: auto;
-    margin-right: 20px;
-    color: #3498db;
+     margin-right: 20px;
+      color: #3498DB;
 }
 
 .promotionCardLink{
-    border: 1px solid #3498db;
-    border-radius: 4px;
-    color: #3498db;
-    text-decoration: none;
-    padding: 8px 10px;
+    border: 1px solid #3498DB;
+     border-radius: 4px;
+      color: #3498DB;
+       text-decoration: none;
+        padding: 8px 10px;
 }
