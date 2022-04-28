@@ -11,18 +11,25 @@ const PromotionSearch = () =>{
 
     useEffect( () => {
 
-      axios.get('http://localhost:5000/promotions?_embed=comments')
+      const params = {};
+      if (search) {
+        params.title_like = search;
+      }
+
+      console.log(search)
+
+      axios.get('http://localhost:5000/promotions?_embed=comments', {params} )
         .then(
           (response) =>{
             setPromotions(response.data);
           }
         );
 
-    }, [] );
+    }, [search] );
 
     return(
         <>
-        <header>
+        <header className={searchCss.promotionsSearchHeader}>
             <h1>Promo Show</h1>
             <Link to="/create">Nova Promoção</Link>
         </header>
@@ -31,6 +38,7 @@ const PromotionSearch = () =>{
           className={searchCss.promotionsSearchInput}
           placeholder="Buscar"
           value={search}
+          onChange={(ev) => setSearch(ev.target.value)}
 
           />
           {promotions.map( (promotions) =>(
