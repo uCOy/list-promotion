@@ -1,18 +1,16 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
+import PromotionForm from '../../../components/Promotion/Form/Form';
+import UIContainer from "../../../components/UI/Container/Container";
 
 const PagesPromotionForm = () =>{
     const {id} = useParams();
+    // console.log(id);
 
     return(
-        <div>
-            {!id
-             ? 'FORM NOVO REGISTRO'
-             : 'FORM EDITAR REGISTRO'
-            }
-              {id && <div> id: {id} </div>}
-            Form!
-        </div>
+        <UIContainer>
+            <PromotionForm id={id ? Number.parseInt(id, 10) : null}/>
+        </UIContainer>
     )
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import card from './card.module.css';
+import { Link } from 'react-router-dom';
 
 function PromotionCard({promotion}) {
 
@@ -23,7 +24,14 @@ function PromotionCard({promotion}) {
                   {promotion.comments.length}{' '}
                   {promotion.comments.length >1 ? 'Comentários' : 'Comentário'}
               </div>
-              <a href={promotion.url} target="_blank" className={card.promotionCardLink}>Ir para o site</a>
+              <a 
+              href={promotion.url} 
+              rel="noopner"
+              className={card.promotionCardLink}
+              >
+                Ir para o site
+              </a>
+              <Link to={`/edit/${promotion.id}`}>Editar</Link>
           </footer>
           
       </div>
