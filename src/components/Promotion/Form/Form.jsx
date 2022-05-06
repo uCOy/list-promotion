@@ -3,6 +3,8 @@ import formCss from './Form.module.css';
 //useHistory
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import UIButton from 'components/UI/Button/Button';
+import { Link } from 'react-router-dom';
 
 const initialValue ={
     title: '',
@@ -13,7 +15,7 @@ const initialValue ={
 
 const PromotionForm = ( { id } ) =>{
 
-    const [values, setValues] = useState(initialValue);
+    const [values, setValues] = useState(id ? null: initialValue);
     const navigate = useNavigate();
 
     // console.log(values)
@@ -67,6 +69,10 @@ const PromotionForm = ( { id } ) =>{
         <div>
             <h1>Promo Show</h1>
             <h2>Nova Promoção</h2>
+            {!values
+                ? (
+                    <div>Carregando...</div>
+                ) : (
             <form onSubmit={onSubmit}>
                 <div className={formCss.promotionFormGroup}>
                     <label htmlFor="title">Título</label>
@@ -84,10 +90,36 @@ const PromotionForm = ( { id } ) =>{
                     <label htmlFor="price">Preço</label>
                     <input type="number" step="any" id="price" name="price" value={values.price} onChange={onChange} />
                 </div>
-                <div>
-                    <button type="submit">Salvar</button>
+                <div className={formCss.promotionFormGroupButton}>                
+                    <UIButton
+                    component="button"
+                    type="submit"
+                    >
+                        Salvar
+                    </UIButton>
+
+                {!values  &&
+                                    
+                    <UIButton
+                    to="/"
+                    component={Link}
+                    theme="bordered-warning"
+                    >
+                        Cancelar
+                    </UIButton>
+                }
+                {values &&
+                    <UIButton
+                    to="/"
+                    component={Link}
+                    theme="conteined-warning"
+                    >
+                        Cancelar
+                    </UIButton>
+                }
                 </div>
             </form>
+            )}
         </div>
     )
 }

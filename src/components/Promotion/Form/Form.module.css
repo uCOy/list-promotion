@@ -18,3 +18,8 @@
     height: 36px;
     padding: 0 10px;
 }
+
+.promotionFormGroupButton{
+    display: flex;
+    justify-content: space-between;
+}
