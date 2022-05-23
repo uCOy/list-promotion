@@ -5,7 +5,7 @@
   display: flex;
   padding: 15px;
   align-items: flex-start;
-
+  position: relative;
 }
 .promotionCardImage{
     max-width: 100px;
@@ -48,6 +48,13 @@
   
 }
 
+.promotionCardButtonDelete{
+  border: unset;
+  background-color: unset;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
 
 
 

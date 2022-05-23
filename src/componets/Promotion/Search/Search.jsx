@@ -10,6 +10,7 @@ import api from '../../../Services/Api'
 const PromotionSearch = () => { 
         const [promotions, setPromotions] =  useState([]);
         const[ search, setSearch] = useState('');
+        const [onDelete, setOnDelete] =  useState(null);
     
 
          useEffect(() => {
@@ -19,14 +20,26 @@ const PromotionSearch = () => {
              
              const getSeach = async () => {
                try {
-                 const promotions = await api.get('/promotions?_embed=comments&_order=desc&_sort=id', {params} ) 
+                 const promotions = await api.get('/promotions?_embed=comments', {params} ) 
                  setPromotions(promotions.data);
                 } catch (error){
                   console.log(error);
                 }}
                 getSeach();
 
-         }, [search])
+         }, [search, onDelete])
+
+         const handleDelete = async (id) => {
+          // const method = 'delete';
+          // const url = `promotions/${id}`
+          // await api[method](url)
+          try{
+            await api.delete(`/promotions/${id}`);
+            setOnDelete(id);   
+          }catch (error) {
+            console.log(error);
+          }
+         }
 
           return (
          <>
@@ -41,7 +54,11 @@ const PromotionSearch = () => {
          onChange={(ev) => setSearch(ev.target.value)}
          />
           {promotions.map((promotion) =>(
-            <PromotionCard promotion={promotion} key={promotion.id}/>
+            <PromotionCard 
+            promotion={promotion} 
+            key={promotion.id}
+            onClickDelete={ () => handleDelete(promotion.id) }
+            />
            ) )}  
          </>
     );

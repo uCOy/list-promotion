@@ -2,7 +2,9 @@ import React from "react";
 import card from "./card.module.css";
 import {Link} from "react-router-dom";
 import UIButton from '../../UI/Button/Button';
-function PromotionCard ({promotion} ) {
+import {Trash} from 'phosphor-react';
+
+function PromotionCard ({promotion, onClickDelete} ) {
   return (
     <div className={card.promotionCard}>
       <img className={card.promotionCardImage} src={promotion.imageUrl} alt={promotion.title} />
@@ -25,6 +27,9 @@ function PromotionCard ({promotion} ) {
           <UIButton component="a" href={promotion.url} rel="nooper" target="_blank">Ir para o site</UIButton>
           <UIButton component={Link} to={`/edit/${promotion.id}`} className={card.promotionCardButton}>editar</UIButton>
         </footer>
+        <button type="button" onClick={onClickDelete} className={card.promotionCardButtonDelete}>
+          <Trash className={card.promotionCardButtonDelete} size={20} />
+        </button>
       </div>
     </div>
   );
